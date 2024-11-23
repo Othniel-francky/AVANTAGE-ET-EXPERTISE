@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <header class="header">CONSEIL EXPERTISE AMIABLE IMPORT</header>
+
+        <div class="main">
+            <div class="intro">
+                <p>COMMENT ASSURER SA MARCHANDISE</p>
+                <p>QUE FAIRE EN CAS D'AVARIES A DESTINATION SUR LES MARCHANDISES?</p>
+            </div>
+
+            <div class="input-section">
+                
+                <button onclick="showInfo(1)">Avantages</button>
+                <button onclick="showInfo(2)">Expertise</button>
+            </div>
+
+            <div class="info-section">
+                <div class="info" id="message-conseils">
+                    <h2>Message et Conseils</h2>
+                    <p id="message-content"></p>
+                </div>
+
+                <div class="info" id="documents-fournir">
+                    <h2>Liste de Documents à Fournir</h2>
+                    <ul id="document-list"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
