@@ -1,41 +1,54 @@
 function showInfo(number) {
-    // Elements for the Message and Documents sections
+    // Récupérer les éléments des sections
+    const messageSection = document.getElementById("message-conseils");
+    const documentsSection = document.getElementById("documents-fournir");
     const messageContent = document.getElementById("message-content");
     const documentList = document.getElementById("document-list");
 
-    // Data for each section based on the selected number
+    // Données pour chaque bouton
     const data = {
         1: {
             message: `
-                Décret 478 du 16 mai 2007 Obligation d'Assurance Locale en Côte d'Ivoire. 
-                La garantie couvre la marchandise du magasin export du fournisseur au magasin import de l'acheteur. 
-                Les garanties sont: FAP sauf ou tout risque ou risques exceptionnels. 
-                Les valeurs assurées = CFR ou CIF ou 1,2CFR ou 1,1CIF ou 0,95CIF. 
-                Les polices d'assurance sont des contrats : la police au voyage, la police à alimenter, la police d'abonnement, la police tiers chargeur. 
-                NB: En maritime pas de majoration, en aérien majoration de 7% de la prime, en terrestre une majoration de 14,5% de la prime. 
-                La prime d'assurance = valeur assurée x taux de prime + les frais accessoire (2500 F CFA).
+                .
             `,
             documents: [
                 "Facture définitive donnant la valeur des marchandises",
-                "Facture fret donnant la valeur du fret international"
-            ]
+                "Titre de transport BL LTA LV ou connaissement ",
+                "Lettre de prise de reserve ", 
+                "Certificat d'assurance",
+                "Note de poids",
+                "Liste de colisage",
+                "Rapport d'expertise, le certificat definitif de pertes etc ...",
+                "Avec le justificatifs de la conservation des recours (Bordereau de livraison avec réserves, courriers de protestation, Reponse des transporteurs);"
+            ],
+            sectionToShow: messageSection
         },
         2: {
             message: `
                 Autres informations et conseils pertinents relatifs à la situation d'avaries à destination sur les marchandises.
             `,
             documents: [
-                "Document requis pour les cas d'avaries",
-                "Rapport d'évaluation des dommages"
-            ]
+                "Prendre des reserves sur l'etat des marchandises afin de conserver les droits et recours de l'assureur",
+                "Requerir l'expert maritime indiquer sur le certificat d'assurance dans un delais de 30 jours",
+                "NB: Ne sont Garantis que les dommages et pertes materiels ainsi que les pertes de pois ou de quantité subis par les facultées assurées",
+                "Suite a l'expertise présenter le dossier de reclamation a l'assureur ou au courtier dans un délais d'un ans",
+                "L'indemnité du par les assureurs est payable dans les 30 jours de la remise du dossier complet avec les pièces justifictatives du dommage",
+                "Convoquez les différentes parties par lettres recommandées a l'expertise amiable ou invitez l'expert a le faire afin de déterminer le taux d'avaries et le niveau de responsabilités"
+            ],
+            sectionToShow: documentsSection
         }
     };
 
-    // Update the content based on the selected number
-    messageContent.innerHTML = data[number].message;
-    documentList.innerHTML = data[number].documents.map(item => `<li>${item}</li>`).join("");
+    // Cacher toutes les sections
+    messageSection.style.display = "none";
+    documentsSection.style.display = "none";
 
-    // Display the sections
-    document.getElementById("message-conseils").style.display = "block";
-    document.getElementById("documents-fournir").style.display = "block";
+    // Mettre à jour les contenus
+    if (number === 1) {
+        messageContent.innerHTML = data[1].documents.map(item => `<li>${item}</li>`).join("");
+        data[1].sectionToShow.style.display = "block"; // Afficher la section message
+    } else if (number === 2) {
+        documentList.innerHTML = data[2].documents.map(item => `<li>${item}</li>`).join("");
+        data[2].sectionToShow.style.display = "block"; // Afficher la section documents
+    }
 }
